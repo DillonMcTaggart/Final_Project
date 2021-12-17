@@ -1,0 +1,7 @@
+<h2>Customers</h2>
+<li>
+  <% @Customers.each do |customer|%>
+  <li><%= link_to customer.name, customer %> has <%= link_to customer.videogame.name, customer.videogame%></li>
+  <% end %>
+</li>
+
