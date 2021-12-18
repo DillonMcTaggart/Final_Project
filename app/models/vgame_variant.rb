@@ -1,0 +1,2 @@
+class VgameVariant < ApplicationRecord
+end
