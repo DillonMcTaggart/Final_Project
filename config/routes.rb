@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root to: "home#index"
-  resources :customers, only: %i[index show]
-  resources :videogames, only: %i[index show]
+  root to: 'genres#index'
+
+  resources :genres, only: [:index] do
+    resources :vgames, only: [:index]
+  end
 end

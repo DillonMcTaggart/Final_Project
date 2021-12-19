@@ -1,0 +1,10 @@
+<h2>Genres (<%= @genres.length %>)</h2>
+<ol>
+  <% @genres.each do |genre| %>
+    <li>
+      <%= link_to genre_vgames_path(genre) do %>
+      <%= genre.title%>
+      (<%= genre.vgames_count %> games)
+    </li>
+  <% end %>
+</ol>
