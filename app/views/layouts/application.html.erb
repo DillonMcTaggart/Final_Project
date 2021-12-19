@@ -14,7 +14,10 @@
   <body>
     <section class ="section">
       <div class="container">
-        <h1>class="title is-1">Customers</h1>
+        <p>
+          <%= link_to "Home", root_path%> |
+          <%= link_to pluralize(current_cart.items_count, 'item'), cart_path %>
+        </p>
       </div>
     <%= yield %>
   </body>

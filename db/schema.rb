@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_18_224005) do
+ActiveRecord::Schema.define(version: 2021_12_19_053558) do
 
   create_table "customers", force: :cascade do |t|
     t.string "name"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2021_12_18_224005) do
     t.decimal "sub_total", precision: 15, scale: 2, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "token"
+    t.string "status", default: "cart"
   end
 
   create_table "vgame_genres", force: :cascade do |t|
