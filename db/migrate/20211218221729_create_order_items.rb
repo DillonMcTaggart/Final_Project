@@ -6,6 +6,8 @@ class CreateOrderItems < ActiveRecord::Migration[6.1]
       t.string :decimal
 
       t.timestamps
+      add_foreign_key :order_items, :orders, name: 'fk_order_items_to_order'
+      add_foreign_key :order_items, :vgame, name: 'fk_order_items_to_vgame'
     end
   end
 end

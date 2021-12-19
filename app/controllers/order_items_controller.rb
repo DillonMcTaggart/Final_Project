@@ -8,6 +8,7 @@ class OrderItemsController < ApplicationController
       vgame_id: params[:vgame_id],
       quantity: params[:quantity]
     )
+
     redirect_to cart_path
   end
 

@@ -7,6 +7,7 @@ class ShoppingCart
 
   def order
     @order ||= Order.find_or_create_by(token: @token, status: 'cart') do |order|
+      order.last_name = 'this'
       order.sub_total = 0
     end
   end
