@@ -27,6 +27,16 @@ games.each do |g|
   VgameGenre.create(vgame: vgame, genre: genres[rand(0..(genres.length - 1))])
 end
 
+file2 = Rails.root.join('db/provinces.csv')
+puts "Loading Provinces from the CSV file: #{file2}"
+
+csv_data = File.read(file2)
+provinces = CSV.parse(csv_data, headers: true, encoding: 'utf-8')
+
+provinces.each do |pro|
+  Province.create(name: pro['Name'], GST: pro['GST'], PST: pro['PST'], HST: pro['HST'])
+end
+
 # if Rails.env.development?
 #   AdminUser.create!(email: 'admin@example.com', password: 'password',
 #                     password_confirmation: 'password')
