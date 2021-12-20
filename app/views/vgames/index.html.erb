@@ -1,6 +1,7 @@
+<%= paginate @vgames%>
+
 <h2>
   <%= link_to "Genres", root_path%> /
-  <%= @genre.title%>/
   Video Games
 </h2>
 
@@ -8,12 +9,11 @@
   <% @vgames.each do |vgame| %>
     <li>
       <%= vgame.title %> (<%= number_to_currency vgame.price %>)
-
-        <%= form_tag order_items_path do %>
-          <%= hidden_field_tag :vgame_id, vgame.id%>
-          <%= number_field_tag :quantity, 1%>
+ <%= form_with url: checkout_index_path, method: :post do %>
+          <%= hidden_field_tag "vgame_id", vgame.id, :id => vgame.id %>
+          <%= number_field_tag :qty, 1%>
           <%= submit_tag "Add to cart" %>
-          <% end %>
+      <% end %>
       <ul>
         <% vgame.vgame_variants.each do |variant|%>
           <li><%= variant.title%> (<%= number_to_currency variant.price %>)</li>
@@ -22,3 +22,5 @@
     </li>
   <% end %>
 </ol>
+
+<%= paginate @vgames %>

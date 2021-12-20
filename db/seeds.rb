@@ -1,29 +1,33 @@
 require 'csv'
 
-Videogame.delete_all
-Customer.delete_all
+OrderItem.delete_all
+Order.delete_all
+Province.delete_all
+VgameGenre.delete_all
+Vgame.delete_all
+Genre.delete_all
 
-filename = Rails.root.join('db/vgsales.csv')
+genres = []
+genres << Genre.create(title: 'Racing')
+genres << Genre.create(title: 'Sports')
+genres << Genre.create(title: 'Platformer')
+genres << Genre.create(title: 'FPS')
+genres << Genre.create(title: 'Action')
+genres << Genre.create(title: 'RTS')
 
-puts "Loading videogames from csv file: #{filename}"
+filename = Rails.root.join('db/videogames1.csv')
+
+puts "Loading Movies from the CSV file: #{filename}"
 
 csv_data = File.read(filename)
-videogames = CSV.parse(csv_data, headers: true, encoding: 'utf-8')
+games = CSV.parse(csv_data, headers: true, encoding: 'utf-8')
 
-videogames.each do |v|
-  custom = Customer.find_or_create_by(name: v['Name'])
-  if custom && custom.valid?
-    videogame = custom.videogames.create(
-      rank: v['Rank'],
-      name: v['Name'],
-      platform: v['Platform'],
-      year: v['Year'],
-      genre: v['Genre'],
-      publisher: v['Publisher'],
-      global_sales: v['Global_Sales']
-    )
-    puts "Invalid movie #{v['Name']}" unless videogame&.valid?
-  else
-    puts "Invalid Customer: #{v['Name']} for videogame: #{v['Name']}"
-  end
+games.each do |g|
+  vgame = Vgame.create(title: g['Name'], price: g['Price'], description: g['Description'])
+  VgameGenre.create(vgame: vgame, genre: genres[rand(0..(genres.length - 1))])
 end
+
+# if Rails.env.development?
+#   AdminUser.create!(email: 'admin@example.com', password: 'password',
+#                     password_confirmation: 'password')
+# end

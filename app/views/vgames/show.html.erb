@@ -1,0 +1,17 @@
+<h2><%= @game.title %></h2>
+  <%= link_to "Genres", root_path%> :
+  <% @game.genres.each do | genre | %>
+  <%= link_to genre.title, genre %> /
+  <% end %>
+
+<p>Price: <%=@game.price%></p>
+<p>Description: <%=@game.description%></p>
+
+<% if @game.image.present? %>
+<div class="card-image">
+<figure class="image">
+<%= image_tag @game.image %>
+</figure>
+</div>
+<% end %>
+

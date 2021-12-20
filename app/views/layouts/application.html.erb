@@ -16,7 +16,9 @@
       <div class="container">
         <p>
           <%= link_to "Home", root_path%> |
-          <%= link_to pluralize(current_cart.items_count, 'item'), cart_path %>
+          <%= link_to pluralize(cart.size, 'item'), checkout_index_path %>
+          <%= session[:shopping_cart] %>
+          <%= cart %>
         </p>
       </div>
     <%= yield %>
