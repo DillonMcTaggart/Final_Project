@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root to: 'genres#index'
+  root to: 'home#index'
+
+  get 'signup', to: 'users#new'
+  get "login", to: "sessions#new"
+  post "login", to: "sessions#create"
+  delete "logout", to: "sessions#destroy"
+  resources :users, except: [:new]
 
   resources :genres, only: %i[index show]
   resources :vgames, only: %i[index show]

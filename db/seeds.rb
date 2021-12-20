@@ -1,5 +1,5 @@
 require 'csv'
-
+# Users.delete_all
 OrderItem.delete_all
 Order.delete_all
 Province.delete_all
@@ -17,7 +17,7 @@ genres << Genre.create(title: 'RTS')
 
 filename = Rails.root.join('db/videogames1.csv')
 
-puts "Loading Movies from the CSV file: #{filename}"
+puts "Loading Games from the CSV file: #{filename}"
 
 csv_data = File.read(filename)
 games = CSV.parse(csv_data, headers: true, encoding: 'utf-8')
