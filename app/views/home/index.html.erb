@@ -1,12 +1,26 @@
+  <html>
+  <head>
+    <title>FinalProject</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel = "stylesheet" href = "https://cnd.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+<h2 class ="is-size-5">Welcome to Heated Water Vapour online videogame shop!</h2>
 <div class ="columns">
   <div class ="column">
       <div class = "column" style="display: flex; justify-content: flex-end">
       <p><%= link_to "Sign up!", signup_path%> | </p>
       <p><%= link_to "Login!", login_path%></p>
     </div>
-    <h2 class ="title is-2">Welcome to Heated Water Vapour online videogame shop!</h2>
+    <h2 class ="is-size-35">Welcome to Heated Water Vapour online videogame shop!</h2>
     </div>
     <body>
       <%= image_tag("snes.jpg")%>
     </body>
   </div>
+  </html>
